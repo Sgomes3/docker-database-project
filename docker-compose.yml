@@ -1,0 +1,17 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: foosball_d3
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: foosball_d3_db
+      MYSQL_USER: sgomes
+      MYSQL_PASSWORD: sgomes123
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./init-db:/docker-entrypoint-initdb.d
+
+volumes:
+  db_data:
